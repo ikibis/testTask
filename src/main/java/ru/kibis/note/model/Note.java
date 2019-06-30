@@ -1,11 +1,18 @@
 package ru.kibis.note.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "notes")
+@Table(name = "notes",
+        indexes = @Index(
+                name = "idx_title_description",
+                columnList = "title, description",
+                unique = false)
+)
 public class Note {
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "title")

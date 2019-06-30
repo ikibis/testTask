@@ -8,12 +8,7 @@ services:
   - postgresql
 
 before_install:
-  - psql -c 'create database car_catalog;' -U postgres
-
-test:
-  adapter: sqlite3
-  database: ":memory:"
-  timeout: 500
+  - psql -c 'create database notes;' -U postgres
 
 # после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
 # Здесь используется сторонни сервис https://codecov.io/

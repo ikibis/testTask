@@ -23,12 +23,28 @@ public class Storage {
         });
     }
 
-    public void delete(int id) {
-        this.storageWrapper.tx(session -> {
+    public int delete(int id) {
+        return this.storageWrapper.tx(session -> {
                     Query query = session.createQuery("delete from Note where id = " + id);
                     query.executeUpdate();
-                    return null;
+                    return id;
                 }
+        );
+    }
+
+    public Note update(Note note, String titleToUpdate, String descriptionToUpdate) {
+        return this.storageWrapper.tx(session -> {
+                    note.setTitle(titleToUpdate);
+                    note.setDescription(descriptionToUpdate);
+                    session.saveOrUpdate(note);
+                    return note;
+                }
+        );
+    }
+
+    public Note findById(int id) {
+        return this.storageWrapper.tx(session ->
+                (Note) session.createQuery("from Note where id = " + id).uniqueResult()
         );
     }
 

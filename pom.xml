@@ -21,9 +21,9 @@
         <profile>
             <id>production</id>
             <properties>
-                <db.url>jdbc:postgresql://localhost/note</db.url>
+                <db.url>jdbc:postgresql://localhost/notes</db.url>
                 <db.username>postgres</db.username>
-                <db.password>note</db.password>
+                <db.password>fastin</db.password>
                 <db.driver>org.postgresql.Driver</db.driver>
             </properties>
         </profile>
@@ -33,9 +33,9 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <db.url>jdbc:postgresql://localhost/note</db.url>
+                <db.url>jdbc:postgresql://localhost/notes</db.url>
                 <db.username>postgres</db.username>
-                <db.password>note</db.password>
+                <db.password>fastin</db.password>
                 <db.driver>org.postgresql.Driver</db.driver>
             </properties>
         </profile>
@@ -85,6 +85,29 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.11.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.4.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

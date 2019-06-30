@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ru.kibis.note.model.Note;
-import ru.kibis.note.service.NotesService;
+import ru.kibis.note.service.NoteService;
 
 import java.util.List;
 
 @Controller
-public class NotesController {
+public class NoteController {
 
-    private final NotesService notesService;
+    private final NoteService noteService;
 
     @Autowired
-    public NotesController(NotesService notesService) {
-        this.notesService = notesService;
+    public NoteController(NoteService noteService) {
+        this.noteService = noteService;
     }
 
     @PostMapping("/add")
@@ -27,7 +27,7 @@ public class NotesController {
             @RequestParam("title") String title,
             @RequestParam("description") String description
     ) {
-        return this.notesService.add(title, description);
+        return this.noteService.add(title, description);
     }
 
     @PostMapping(value = "/notes", produces = "application/json")
@@ -35,19 +35,30 @@ public class NotesController {
     public List findNotesByString(
             @RequestParam("stringToSearch") String stringToSearch
     ) {
-        return this.notesService.findByString(stringToSearch);
+        return this.noteService.findByString(stringToSearch);
     }
 
     @GetMapping(value = "/notes", produces = "application/json")
     @ResponseBody
     public List findAllNotes() {
-        return this.notesService.findAll();
+        return this.noteService.findAll();
     }
 
     @PostMapping("/delete")
-    public void deleteNote(
+    @ResponseBody
+    public int deleteNote(
             @RequestParam("id") int id
     ) {
-        this.notesService.delete(id);
+        return this.noteService.delete(id);
+    }
+
+    @PostMapping("/update")
+    @ResponseBody
+    public Note updateNote(
+            @RequestParam("id") int id,
+            @RequestParam("title") String title,
+            @RequestParam("description") String description
+    ) {
+        return this.noteService.update(id, title, description);
     }
 }

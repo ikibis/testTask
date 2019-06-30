@@ -4,10 +4,12 @@ import ru.kibis.note.model.Note;
 
 import java.util.List;
 
-public interface NotesService {
+public interface NoteService {
     Note add(String title, String description);
 
-    void delete(int id);
+    int delete(int id);
+
+    Note update(int id, String title, String description);
 
     List findAll();
 

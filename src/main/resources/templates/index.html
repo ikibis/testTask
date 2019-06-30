@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Notes Service</title>
     <meta charset="utf-8">
@@ -24,6 +24,9 @@
             <div class="form-group">
                 <input type="text" class="form-control" id="search" onkeyup="findNotes()" placeholder="Поиск заметок">
             </div>
+            <h3>
+                <div id="searchTime"></div>
+            </h3>
         </div>
         <div class="col-sm-1">
         </div>
@@ -60,19 +63,19 @@
 
 <div class="container">
     <h2>Заметки :</h2>
-        <table class="table" name="dynamic" id="dynamic">
-            <thead>
-            <tr valign="middle" align="center">
-                <th valign="middle" align="center">Заголовок</th>
-                <th valign="middle" align="center"></th>
-            </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-        <h3>
-            <div id="searchResult"></div>
-        </h3>
+    <table class="table" name="dynamic" id="dynamic">
+        <thead>
+        <tr valign="middle" align="center">
+            <th valign="middle" align="center">Заголовок</th>
+            <th valign="middle" align="center"></th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <h4>
+        <div id="searchResult"></div>
+    </h4>
 </div>
 </body>
 </html>
